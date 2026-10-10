@@ -19,6 +19,21 @@ export default defineNuxtConfig({
   spaLoadingTemplate: true,
 
   devtools: { enabled: false },
+
+  // Tanpa app manifest: aplikasi tidak perlu mengunduh file builds/latest.json dan builds/meta/*.json
+  // saat dibuka, sehingga rantai permintaan jaringan lebih pendek.
+  experimental: {
+    appManifest: false,
+  },
+
+  // Halaman utama dibuat sebagai berkas HTML statis agar langsung dilayani CDN (tanpa serverless function).
+  nitro: {
+    prerender: {
+      routes: ["/", "/auth/login", "/auth/register", "/users", "/profile"],
+      crawlLinks: false,
+      failOnError: false,
+    },
+  },
   modules: ["@pinia/nuxt"],
   css: ["~/index.css"],
 
