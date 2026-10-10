@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <button type="submit" data-testid="register-submit-button" :disabled="loading" class="btn-primary w-full">
+      <button id="register-submit-button" type="submit" data-testid="register-submit-button" :disabled="loading" class="btn-primary w-full">
         <LoaderCircle v-if="loading" :size="18" class="animate-spin" />
         <UserPlus v-else :size="18" />
         <span>{{ loading ? "Membuat akun..." : "Buat akun" }}</span>

@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <button type="submit" data-testid="login-submit-button" :disabled="loading" class="btn-primary w-full">
+      <button id="login-submit-button" type="submit" data-testid="login-submit-button" :disabled="loading" class="btn-primary w-full">
         <LoaderCircle v-if="loading" :size="18" class="animate-spin" />
         <LogIn v-else :size="18" />
         <span>{{ loading ? "Memeriksa akun..." : "Masuk" }}</span>
