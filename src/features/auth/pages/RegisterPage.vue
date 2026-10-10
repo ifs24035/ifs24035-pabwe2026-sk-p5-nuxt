@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-2xl font-extrabold tracking-tight text-ink-900">Mulai mencatat arus kas</h2>
+    <h1 class="text-2xl font-extrabold tracking-tight text-ink-900">Mulai mencatat arus kas</h1>
     <p class="mt-1 text-sm text-ink-500">Buat akun Delcom untuk menyimpan catatan keuangan Anda.</p>
 
     <form class="mt-6 space-y-4" @submit.prevent="onSubmitHandler">

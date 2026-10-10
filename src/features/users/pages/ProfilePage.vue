@@ -55,10 +55,10 @@
     <div class="grid gap-6 md:grid-cols-2">
       <!-- Biodata -->
       <form class="card space-y-4 p-6" @submit.prevent="handleUpdateProfile">
-        <h3 class="flex items-center gap-2 font-bold text-ink-900">
+        <h2 class="flex items-center gap-2 font-bold text-ink-900">
           <User :size="18" class="text-ink-400" />
           Biodata
-        </h3>
+        </h2>
 
         <div>
           <label for="profile-name" class="field-label">Nama lengkap</label>
@@ -77,10 +77,10 @@
 
       <!-- Kata sandi -->
       <form class="card space-y-4 p-6" @submit.prevent="handleUpdatePassword">
-        <h3 class="flex items-center gap-2 font-bold text-ink-900">
+        <h2 class="flex items-center gap-2 font-bold text-ink-900">
           <ShieldCheck :size="18" class="text-ink-400" />
           Keamanan
-        </h3>
+        </h2>
 
         <div>
           <label for="current-password" class="field-label">Kata sandi saat ini</label>

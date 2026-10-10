@@ -1,6 +1,8 @@
 import tailwindcss from "@tailwindcss/vite";
 
 const DEFAULT_BASEURL = "https://open-api.delcom.org/api/v1";
+const FONT_URL =
+  "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -12,6 +14,9 @@ export default defineNuxtConfig({
 
   // Routing dikendalikan oleh `src/router.options.ts` -> `src/routes.ts`
   pages: true,
+
+  // Kerangka loading statis di HTML awal agar halaman langsung tampil sebelum JavaScript siap
+  spaLoadingTemplate: true,
 
   devtools: { enabled: false },
   modules: ["@pinia/nuxt"],
@@ -45,9 +50,12 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+      ],
+      // Google Fonts dimuat tanpa memblokir render pertama (stylesheet disisipkan lewat script).
+      script: [
         {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
+          innerHTML: `(function(){var l=document.createElement("link");l.rel="stylesheet";l.href="${FONT_URL}";document.head.appendChild(l);})();`,
+          tagPosition: "head",
         },
       ],
     },

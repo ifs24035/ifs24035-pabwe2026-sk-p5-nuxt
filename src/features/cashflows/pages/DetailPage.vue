@@ -59,7 +59,7 @@
         >
           {{ cashFlow.type === "inflow" ? "+" : "-" }} {{ formatRupiah(cashFlow.nominal) }}
         </p>
-        <p class="mt-1 text-sm font-medium text-ink-600">Transaksi #{{ cashFlow.id }}</p>
+        <h1 class="mt-1 text-sm font-medium text-ink-600">Transaksi #{{ cashFlow.id }}</h1>
       </div>
 
       <dl class="grid gap-6 p-6 sm:grid-cols-2 sm:p-8">

@@ -24,6 +24,17 @@ describe("router.options", () => {
     expect(router.resolve("/tidak/ada").name).toBe("not-found");
   });
 
+  it("memuat komponen halaman dashboard secara lazy", async () => {
+    const records = routes.flatMap((route) => [route, ...(route.children ?? [])]);
+    const loaders = records
+      .map((route) => route.component)
+      .filter((component): component is () => Promise<{ default: unknown }> => typeof component === "function");
+
+    expect(loaders).toHaveLength(5);
+    const modules = await Promise.all(loaders.map((load) => load()));
+    modules.forEach((module) => expect(module.default).toBeDefined());
+  });
+
   it("membuat router dengan history bawaan", () => {
     expect(createAppRouter().options.routes).toBe(routes);
   });

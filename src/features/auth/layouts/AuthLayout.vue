@@ -10,9 +10,9 @@
       </div>
 
       <div class="relative z-10 max-w-md">
-        <h1 class="text-4xl font-extrabold leading-tight tracking-tight">
+        <p class="text-4xl font-extrabold leading-tight tracking-tight">
           Setiap rupiah punya cerita. Catat sebelum lupa.
-        </h1>
+        </p>
         <p class="mt-4 text-base leading-relaxed text-ink-200">
           Pantau uang masuk dan keluar dari kas, tabungan, dan pinjaman, lalu lihat saldo bersih Anda
           saat ini tanpa menghitung manual.

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { flushPromises } from "@vue/test-utils";
 import { createMemoryHistory } from "vue-router";
 import SidebarComponent from "./SidebarComponent.vue";
@@ -40,9 +40,9 @@ describe("SidebarComponent", () => {
     expect(wrapper.emitted("close-mobile")).toHaveLength(1);
 
     await wrapper.get('[data-testid="nav-profile"]').trigger("click");
-    await flushPromises();
     expect(wrapper.emitted("close-mobile")).toHaveLength(2);
-    expect(router.currentRoute.value.path).toBe("/profile");
+    // Halaman profil dimuat lazy, jadi navigasi perlu ditunggu sampai selesai.
+    await vi.waitFor(() => expect(router.currentRoute.value.path).toBe("/profile"));
   });
 
   it("tidak menampilkan backdrop saat sidebar tertutup", async () => {

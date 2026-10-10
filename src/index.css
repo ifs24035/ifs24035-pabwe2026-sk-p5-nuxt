@@ -14,7 +14,7 @@
   --color-ink-100: #e3e8f1;
   --color-ink-200: #c9d2e2;
   --color-ink-300: #a3b0c7;
-  --color-ink-400: #7686a3;
+  --color-ink-400: #5a6b8a;
   --color-ink-500: #566887;
   --color-ink-600: #415070;
   --color-ink-700: #2f3c58;
@@ -31,14 +31,14 @@
   --color-inflow-100: #c9eedc;
   --color-inflow-400: #3ec595;
   --color-inflow-500: #12a474;
-  --color-inflow-600: #0c8c61;
+  --color-inflow-600: #0a7a55;
   --color-inflow-700: #0a7050;
 
   --color-outflow-50: #fdedee;
   --color-outflow-100: #fad3d6;
   --color-outflow-400: #ef7a7e;
   --color-outflow-500: #e5484d;
-  --color-outflow-600: #d13338;
+  --color-outflow-600: #c42b31;
   --color-outflow-700: #a9262b;
 
   --animate-rise: rise 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;

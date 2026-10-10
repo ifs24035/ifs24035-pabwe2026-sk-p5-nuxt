@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-2xl font-extrabold tracking-tight text-ink-900">Selamat datang kembali</h2>
+    <h1 class="text-2xl font-extrabold tracking-tight text-ink-900">Selamat datang kembali</h1>
     <p class="mt-1 text-sm text-ink-500">Masuk untuk melihat saldo dan catatan arus kas Anda.</p>
 
     <form class="mt-6 space-y-4" @submit.prevent="onSubmitHandler">

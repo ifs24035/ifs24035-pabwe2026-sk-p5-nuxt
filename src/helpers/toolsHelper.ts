@@ -1,8 +1,15 @@
-import Swal, { type SweetAlertResult } from "sweetalert2";
+import type { SweetAlertResult } from "sweetalert2";
 
 const INK = "#141d32";
 
-export function showErrorDialog(message: string): Promise<SweetAlertResult<any>> {
+// SweetAlert2 dimuat saat pertama kali dialog ditampilkan (bukan di bundle awal),
+// sehingga halaman pertama lebih ringan dan lebih cepat tampil.
+async function loadSwal() {
+  return (await import("sweetalert2")).default;
+}
+
+export async function showErrorDialog(message: string): Promise<SweetAlertResult<any>> {
+  const Swal = await loadSwal();
   return Swal.fire({
     title: "Terjadi kesalahan",
     text: message,
@@ -17,7 +24,8 @@ export function showErrorDialog(message: string): Promise<SweetAlertResult<any>>
   });
 }
 
-export function showSuccessDialog(message: string): Promise<SweetAlertResult<any>> {
+export async function showSuccessDialog(message: string): Promise<SweetAlertResult<any>> {
+  const Swal = await loadSwal();
   return Swal.fire({
     title: "Berhasil",
     text: message,
@@ -32,7 +40,8 @@ export function showSuccessDialog(message: string): Promise<SweetAlertResult<any
   });
 }
 
-export function showConfirmDialog(message: string): Promise<SweetAlertResult<any>> {
+export async function showConfirmDialog(message: string): Promise<SweetAlertResult<any>> {
+  const Swal = await loadSwal();
   return Swal.fire({
     title: "Konfirmasi",
     text: message,
