@@ -43,6 +43,7 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    build: { target: "esnext" },
     define: {
       // Konstanta global yang dideklarasikan pada `src/env.d.ts`
       DELCOM_BASEURL: JSON.stringify(process.env.VITE_DELCOM_BASEURL || DEFAULT_BASEURL),
@@ -63,13 +64,11 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
       ],
-      // Google Fonts dimuat tanpa memblokir render pertama (stylesheet disisipkan lewat script).
+      // Google Fonts dimuat setelah halaman selesai tampil, agar tidak berebut bandwidth dengan JavaScript awal.
       script: [
         {
-          innerHTML: `(function(){var l=document.createElement("link");l.rel="stylesheet";l.href="${FONT_URL}";document.head.appendChild(l);})();`,
+          innerHTML: `(function(){function f(){var l=document.createElement("link");l.rel="stylesheet";l.href="${FONT_URL}";document.head.appendChild(l);}function r(){(window.requestIdleCallback||function(c){setTimeout(c,1)})(f);}if(document.readyState==="complete"){r();}else{window.addEventListener("load",r);}})();`,
           tagPosition: "head",
         },
       ],
