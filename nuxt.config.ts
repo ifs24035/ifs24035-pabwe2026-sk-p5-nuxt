@@ -64,11 +64,12 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
+        // Google Fonts di-preload (prioritas rendah) lalu diaktifkan setelah halaman selesai dimuat.
+        { id: "gfont", rel: "preload", as: "style", href: FONT_URL, fetchpriority: "low" },
       ],
-      // Google Fonts dimuat setelah halaman selesai tampil, agar tidak berebut bandwidth dengan JavaScript awal.
       script: [
         {
-          innerHTML: `(function(){function f(){var l=document.createElement("link");l.rel="stylesheet";l.href="${FONT_URL}";document.head.appendChild(l);}function r(){(window.requestIdleCallback||function(c){setTimeout(c,1)})(f);}if(document.readyState==="complete"){r();}else{window.addEventListener("load",r);}})();`,
+          innerHTML: `(function(){function a(){var l=document.getElementById("gfont");if(l){l.rel="stylesheet";}}if(document.readyState==="complete"){a();}else{window.addEventListener("load",a);}})();`,
           tagPosition: "head",
         },
       ],

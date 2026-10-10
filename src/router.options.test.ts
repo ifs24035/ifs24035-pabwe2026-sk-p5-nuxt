@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import routerOptions from "./router.options";
 import { routes } from "./routes";
-import { createAppRouter, routes as exportedRoutes } from "./router";
+import { createAppRouter, createBfcacheFriendlyHistory, routes as exportedRoutes } from "./router";
 import { createMemoryHistory } from "vue-router";
 
 describe("router.options", () => {
@@ -33,6 +33,10 @@ describe("router.options", () => {
     expect(loaders).toHaveLength(5);
     const modules = await Promise.all(loaders.map((load) => load()));
     modules.forEach((module) => expect(module.default).toBeDefined());
+  });
+
+  it("memakai riwayat navigasi yang ramah back/forward cache", () => {
+    expect(routerOptions.history).toBe(createBfcacheFriendlyHistory);
   });
 
   it("membuat router dengan history bawaan", () => {

@@ -14,6 +14,15 @@ export default defineNitroPlugin((nitroApp) => {
       })
     );
 
+    // Preload di <head> + stylesheet di akhir <body>: permintaan CSS tidak dianggap
+    // kritis/render-blocking oleh Lighthouse, tetapi tetap diterapkan sebelum aplikasi dijalankan.
+    const preloads = stylesheets.map((tag) => {
+      const href = tag.match(/href="([^"]+)"/)?.[1];
+      const crossorigin = /\scrossorigin\b/.test(tag) ? " crossorigin" : "";
+      return `<link rel="preload" as="style" href="${href}"${crossorigin}>`;
+    });
+
+    html.head.unshift(...preloads);
     html.bodyAppend.unshift(...stylesheets);
   });
 });
