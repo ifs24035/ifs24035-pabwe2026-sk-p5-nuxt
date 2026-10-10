@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens - "Buku Kas"
+   Navy tinta untuk struktur, kuning emas sebagai satu-satunya aksen
+   merek, hijau/merah hanya untuk arti uang masuk/keluar.
+------------------------------------------------------------------- */
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --color-paper: #f3f5f9;
+
+  --color-ink-50: #f1f4f9;
+  --color-ink-100: #e3e8f1;
+  --color-ink-200: #c9d2e2;
+  --color-ink-300: #a3b0c7;
+  --color-ink-400: #7686a3;
+  --color-ink-500: #566887;
+  --color-ink-600: #415070;
+  --color-ink-700: #2f3c58;
+  --color-ink-800: #1f2a42;
+  --color-ink-900: #141d32;
+  --color-ink-950: #0b1222;
+
+  --color-gold-300: #f8d77a;
+  --color-gold-400: #f5c542;
+  --color-gold-500: #e9ae12;
+  --color-gold-600: #c58a07;
+
+  --color-inflow-50: #e8f7f0;
+  --color-inflow-100: #c9eedc;
+  --color-inflow-400: #3ec595;
+  --color-inflow-500: #12a474;
+  --color-inflow-600: #0c8c61;
+  --color-inflow-700: #0a7050;
+
+  --color-outflow-50: #fdedee;
+  --color-outflow-100: #fad3d6;
+  --color-outflow-400: #ef7a7e;
+  --color-outflow-500: #e5484d;
+  --color-outflow-600: #d13338;
+  --color-outflow-700: #a9262b;
+
+  --animate-rise: rise 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-pop: pop 0.18s ease-out both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink-800);
+    background-color: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  a,
+  [role="button"],
+  select,
+  label[for],
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-ink-100 bg-white;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-semibold text-ink-600;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-300 transition focus:border-ink-700 focus:outline-none focus:ring-4 focus:ring-ink-900/10;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-60 bg-ink-900 text-white hover:bg-ink-800 active:bg-ink-950;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-60 bg-gold-400 text-ink-950 hover:bg-gold-300 active:bg-gold-500;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-60 border border-ink-200 bg-white text-ink-700 hover:bg-ink-50;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-60 bg-outflow-50 text-outflow-700 hover:bg-outflow-100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

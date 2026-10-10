@@ -1,0 +1,30 @@
+# Dependencies
+node_modules
+
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Testing
+coverage
+
+# Environment (file .env berisi konfigurasi non-rahasia dan ikut di-commit)
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+bun-debug.log*
+
+# Misc
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+*.tsbuildinfo
